@@ -21,9 +21,6 @@ RUN pip install --upgrade pip setuptools wheel && \
 
 # Copy application code
 COPY backend/ ./backend/
-COPY app.py ./ 
-COPY simple_backend.py ./ 
-COPY enterprise_launcher.py ./
 
 # Create non-root user
 RUN useradd -m -u 1000 appuser && chown -R appuser:appuser /app
