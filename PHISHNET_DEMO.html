@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🧠 PHISHNET - AI Cybersecurity Suite</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=JetBrains+Mono:wght@400;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Orbitron', monospace;
+            background: linear-gradient(135deg, #0f0000 0%, #1a0000 50%, #2d0000 100%);
+            color: #ffffff;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        /* 🔥 STUNNING RED CYBER GRID BACKGROUND */
+        .cyber-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(255, 0, 64, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 0, 64, 0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+            animation: pulse-grid 3s ease-in-out infinite alternate;
+            z-index: -1;
+        }
+        
+        @keyframes pulse-grid {
+            0% { opacity: 0.3; }
+            100% { opacity: 0.7; }
+        }
+        
+        /* 🌊 FLOATING RED PARTICLES */
+        .particle {
+            position: fixed;
+            width: 2px;
+            height: 2px;
+            background: #ff0040;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #ff0040, 0 0 20px #ff0040;
+            animation: float-particle 15s linear infinite;
+            z-index: -1;
+        }
+        
+        @keyframes float-particle {
+            0% { transform: translateY(100vh) translateX(0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-10vh) translateX(100px); opacity: 0; }
+        }
+        
+        /* 🎭 MAIN CONTAINER */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* 🚨 HEADER WITH NEON GLOW */
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 40px 0;
+        }
+        
+        .main-title {
+            font-size: 4.5rem;
+            font-weight: 900;
+            color: #ff0040;
+            text-shadow: 0 0 20px #ff0040, 0 0 40px #dc143c;
+            animation: intense-glow 2s ease-in-out infinite alternate;
+            margin-bottom: 20px;
+        }
+        
+        @keyframes intense-glow {
+            0% { 
+                text-shadow: 0 0 20px #ff0040, 0 0 40px #dc143c;
+                transform: scale(1);
+            }
+            100% { 
+                text-shadow: 0 0 30px #ff0040, 0 0 60px #dc143c, 0 0 80px #ff1744;
+                transform: scale(1.02);
+            }
+        }
+        
+        .subtitle {
+            font-size: 1.8rem;
+            color: #ff4d6d;
+            margin-bottom: 15px;
+            animation: cyber-flicker 0.15s ease-in-out infinite alternate;
+        }
+        
+        @keyframes cyber-flicker {
+            0% { opacity: 1; }
+            100% { opacity: 0.8; }
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            color: #ff6b85;
+            font-style: italic;
+        }
+        
+        /* 📊 DASHBOARD GRID */
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .card {
+            background: rgba(255, 0, 64, 0.05);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 0, 64, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 0 30px rgba(255, 0, 64, 0.2);
+            animation: blood-pulse 2.5s ease-in-out infinite;
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(255, 0, 64, 0.4);
+        }
+        
+        @keyframes blood-pulse {
+            0%, 100% { 
+                background: rgba(255, 0, 64, 0.05);
+                border-color: rgba(255, 0, 64, 0.3);
+            }
+            50% { 
+                background: rgba(255, 0, 64, 0.15);
+                border-color: rgba(255, 0, 64, 0.6);
+            }
+        }
+        
+        .card-title {
+            font-size: 1.5rem;
+            color: #ff0040;
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px #ff0040;
+        }
+        
+        .card-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #dc143c;
+            margin-bottom: 10px;
+            text-shadow: 0 0 15px #dc143c;
+        }
+        
+        .card-description {
+            color: #ff8fa3;
+            font-size: 0.9rem;
+        }
+        
+        /* 🌐 THREAT MAP */
+        .threat-map {
+            background: rgba(255, 0, 64, 0.08);
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(255, 0, 64, 0.4);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 50px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .threat-map::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #ff0040, transparent);
+            animation: scan-line 3s linear infinite;
+        }
+        
+        @keyframes scan-line {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        .map-title {
+            font-size: 2rem;
+            color: #ff0040;
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 0 0 20px #ff0040;
+        }
+        
+        .map-canvas {
+            width: 100%;
+            height: 400px;
+            background: #080000;
+            border: 1px solid rgba(255, 0, 64, 0.3);
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* 🎯 SCANNING ANIMATION */
+        .scanner {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 200px;
+            height: 200px;
+            transform: translate(-50%, -50%);
+        }
+        
+        .scanner-ring {
+            position: absolute;
+            border: 2px solid #ff0040;
+            border-radius: 50%;
+            animation: scanner-pulse 2s ease-in-out infinite;
+        }
+        
+        .scanner-ring:nth-child(1) {
+            width: 100%;
+            height: 100%;
+            animation-delay: 0s;
+        }
+        
+        .scanner-ring:nth-child(2) {
+            width: 70%;
+            height: 70%;
+            top: 15%;
+            left: 15%;
+            animation-delay: 0.5s;
+        }
+        
+        .scanner-ring:nth-child(3) {
+            width: 40%;
+            height: 40%;
+            top: 30%;
+            left: 30%;
+            animation-delay: 1s;
+        }
+        
+        @keyframes scanner-pulse {
+            0%, 100% { 
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% { 
+                opacity: 0.3;
+                transform: scale(1.2);
+            }
+        }
+        
+        /* 🚨 THREAT FEED */
+        .threat-feed {
+            background: rgba(255, 0, 64, 0.05);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 0, 64, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        
+        .feed-title {
+            font-size: 1.5rem;
+            color: #ff0040;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px #ff0040;
+        }
+        
+        .threat-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            margin-bottom: 10px;
+            background: rgba(139, 0, 0, 0.2);
+            border: 1px solid rgba(255, 0, 64, 0.2);
+            border-radius: 8px;
+            animation: threat-appear 0.5s ease-in-out;
+        }
+        
+        @keyframes threat-appear {
+            0% { opacity: 0; transform: translateX(-20px); }
+            100% { opacity: 1; transform: translateX(0); }
+        }
+        
+        .threat-dot {
+            width: 8px;
+            height: 8px;
+            background: #ff0040;
+            border-radius: 50%;
+            margin-right: 15px;
+            animation: pulse-dot 1s ease-in-out infinite;
+        }
+        
+        @keyframes pulse-dot {
+            0%, 100% { box-shadow: 0 0 5px #ff0040; }
+            50% { box-shadow: 0 0 20px #ff0040, 0 0 30px #ff0040; }
+        }
+        
+        .threat-type {
+            font-weight: 700;
+            color: #ff2847;
+            margin-right: 15px;
+            min-width: 100px;
+        }
+        
+        .threat-details {
+            color: #ff8fa3;
+            font-size: 0.9rem;
+        }
+        
+        /* 🎮 API LINKS */
+        .api-section {
+            text-align: center;
+            margin-top: 50px;
+        }
+        
+        .api-title {
+            font-size: 2rem;
+            color: #ff0040;
+            margin-bottom: 30px;
+            text-shadow: 0 0 20px #ff0040;
+        }
+        
+        .api-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .api-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background: rgba(255, 0, 64, 0.1);
+            border: 2px solid #ff0040;
+            color: #ff0040;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(255, 0, 64, 0.3);
+        }
+        
+        .api-button:hover {
+            background: rgba(255, 0, 64, 0.2);
+            box-shadow: 0 0 30px rgba(255, 0, 64, 0.5);
+            transform: translateY(-3px);
+        }
+        
+        /* 📱 RESPONSIVE */
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 3rem;
+            }
+            
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+            
+            .api-links {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cyber-grid"></div>
+    
+    <div class="container">
+        <!-- 🎯 HEADER -->
+        <header class="header">
+            <h1 class="main-title">🧠 PHISHNET</h1>
+            <h2 class="subtitle">AI Cybersecurity Suite</h2>
+            <p class="tagline">"Detect, analyze, visualize, and neutralize phishing in real time."</p>
+        </header>
+        
+        <!-- 📊 LIVE STATS DASHBOARD -->
+        <div class="dashboard">
+            <div class="card">
+                <h3 class="card-title">🚨 Active Threats</h3>
+                <div class="card-value" id="activeThreats">247</div>
+                <p class="card-description">Real-time phishing attempts detected</p>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title">🛡️ Total Protected</h3>
+                <div class="card-value" id="totalScanned">1,847,392</div>
+                <p class="card-description">Emails analyzed and secured</p>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title">🎯 Detection Rate</h3>
+                <div class="card-value">99.8%</div>
+                <p class="card-description">AI-powered accuracy rate</p>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title">⚡ Response Time</h3>
+                <div class="card-value">1.2s</div>
+                <p class="card-description">Average threat analysis speed</p>
+            </div>
+        </div>
+        
+        <!-- 🌐 THREAT VISUALIZATION -->
+        <div class="threat-map">
+            <h3 class="map-title">🌍 Global Threat Map</h3>
+            <div class="map-canvas">
+                <div class="scanner">
+                    <div class="scanner-ring"></div>
+                    <div class="scanner-ring"></div>
+                    <div class="scanner-ring"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 🚨 LIVE THREAT FEED -->
+        <div class="threat-feed">
+            <h3 class="feed-title">🔴 Live Threat Intelligence Feed</h3>
+            <div id="threatFeed">
+                <div class="threat-item">
+                    <div class="threat-dot"></div>
+                    <span class="threat-type">PHISHING</span>
+                    <span class="threat-details">Suspicious email from fake-bank-security@suspicious-domain.net detected</span>
+                </div>
+                <div class="threat-item">
+                    <div class="threat-dot"></div>
+                    <span class="threat-type">MALWARE</span>
+                    <span class="threat-details">Malicious attachment in email with subject "Invoice_2024.exe"</span>
+                </div>
+                <div class="threat-item">
+                    <div class="threat-dot"></div>
+                    <span class="threat-type">SPOOFING</span>
+                    <span class="threat-details">Domain spoofing detected: paypaI-security.com (note the 'I' instead of 'l')</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 🎮 API ACCESS -->
+        <div class="api-section">
+            <h3 class="api-title">🚀 Live API Endpoints</h3>
+            <div class="api-links">
+                <a href="http://localhost:8001/docs" class="api-button" target="_blank">
+                    📚 API Documentation
+                </a>
+                <a href="http://localhost:8001/api/v1/stats" class="api-button" target="_blank">
+                    📊 Live Statistics
+                </a>
+                <a href="http://localhost:8001/api/v1/campaigns" class="api-button" target="_blank">
+                    🕵️ Campaign Tracking
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // 🌊 Generate floating particles
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + 'vw';
+            particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            particle.style.animationDelay = Math.random() * 2 + 's';
+            document.body.appendChild(particle);
+            
+            setTimeout(() => {
+                particle.remove();
+            }, 20000);
+        }
+        
+        // Create particles continuously
+        setInterval(createParticle, 500);
+        
+        // 📊 Simulate live data updates
+        function updateStats() {
+            const activeThreats = document.getElementById('activeThreats');
+            const totalScanned = document.getElementById('totalScanned');
+            
+            if (activeThreats) {
+                const current = parseInt(activeThreats.textContent);
+                activeThreats.textContent = current + Math.floor(Math.random() * 5 - 2);
+            }
+            
+            if (totalScanned) {
+                const current = parseInt(totalScanned.textContent.replace(/,/g, ''));
+                const newValue = current + Math.floor(Math.random() * 100);
+                totalScanned.textContent = newValue.toLocaleString();
+            }
+        }
+        
+        setInterval(updateStats, 3000);
+        
+        // 🚨 Add new threat alerts
+        function addThreatAlert() {
+            const threatTypes = ['PHISHING', 'MALWARE', 'SPOOFING', 'SUSPICIOUS'];
+            const threats = [
+                'Email from fake Microsoft security team intercepted',
+                'Cryptocurrency scam detected in promotional email',
+                'PDF attachment with embedded malware blocked',
+                'Urgent account verification phishing attempt prevented',
+                'Social engineering attack targeting financial information',
+                'Ransomware payload detected in ZIP attachment'
+            ];
+            
+            const feed = document.getElementById('threatFeed');
+            const newThreat = document.createElement('div');
+            newThreat.className = 'threat-item';
+            newThreat.innerHTML = `
+                <div class="threat-dot"></div>
+                <span class="threat-type">${threatTypes[Math.floor(Math.random() * threatTypes.length)]}</span>
+                <span class="threat-details">${threats[Math.floor(Math.random() * threats.length)]}</span>
+            `;
+            
+            feed.insertBefore(newThreat, feed.firstChild);
+            
+            // Remove old alerts
+            if (feed.children.length > 5) {
+                feed.removeChild(feed.lastChild);
+            }
+        }
+        
+        setInterval(addThreatAlert, 5000);
+        
+        // Initial particle burst
+        for (let i = 0; i < 20; i++) {
+            setTimeout(createParticle, i * 100);
+        }
+    </script>
+</body>
+</html>

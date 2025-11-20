@@ -1,0 +1,60 @@
+{
+  "name": "phishnet-frontend",
+  "version": "1.0.0",
+  "description": "🧠 PHISHNET - AI Cybersecurity Suite Frontend",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "next": "^14.0.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "@types/node": "^20.9.0",
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15",
+    "typescript": "^5.2.2",
+    "tailwindcss": "^3.3.5",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.31",
+    "@tailwindcss/forms": "^0.5.7",
+    "@headlessui/react": "^1.7.17",
+    "@heroicons/react": "^2.0.18",
+    "framer-motion": "^10.16.4",
+    "three": "^0.158.0",
+    "@types/three": "^0.158.0",
+    "@react-three/fiber": "^8.15.11",
+    "@react-three/drei": "^9.88.13",
+    "recharts": "^2.8.0",
+    "react-dropzone": "^14.2.3",
+    "react-hook-form": "^7.47.0",
+    "react-hot-toast": "^2.4.1",
+    "axios": "^1.6.0",
+    "socket.io-client": "^4.7.4",
+    "date-fns": "^2.30.0",
+    "classnames": "^2.3.2",
+    "react-syntax-highlighter": "^15.5.0",
+    "@types/react-syntax-highlighter": "^15.5.11",
+    "react-json-view": "^1.21.3",
+    "lucide-react": "^0.292.0",
+    "react-beautiful-dnd": "^13.1.1",
+    "@types/react-beautiful-dnd": "^13.1.6",
+    "react-confetti": "^6.1.0",
+    "react-loading-skeleton": "^3.3.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.53.0",
+    "eslint-config-next": "^14.0.3",
+    "@typescript-eslint/eslint-plugin": "^6.10.0",
+    "@typescript-eslint/parser": "^6.10.0",
+    "prettier": "^3.0.3",
+    "prettier-plugin-tailwindcss": "^0.5.7"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

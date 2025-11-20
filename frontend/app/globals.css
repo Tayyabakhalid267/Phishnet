@@ -1,0 +1,338 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom CSS for PHISHNET cyberpunk theme */
+
+:root {
+  --cyber-green: #00ff88;
+  --cyber-red: #ff3366;
+  --cyber-blue: #4da6ff;
+  --cyber-purple: #8c1aff;
+  --cyber-orange: #ff6b35;
+  --cyber-dark: #0a0e27;
+  --cyber-darker: #050812;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  background-color: var(--cyber-dark);
+  color: #ffffff;
+  font-family: 'Roboto', 'Inter', system-ui, sans-serif;
+}
+
+body {
+  background-image: 
+    radial-gradient(circle at 20% 80%, rgba(0, 255, 136, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(77, 166, 255, 0.1) 0%, transparent 50%),
+    linear-gradient(135deg, rgba(10, 14, 39, 0.9) 0%, rgba(5, 8, 18, 0.95) 100%);
+  min-height: 100vh;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 255, 136, 0.3);
+  border-radius: 4px;
+  border: 1px solid rgba(0, 255, 136, 0.1);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 255, 136, 0.5);
+}
+
+/* Glass morphism effect */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+/* Cyber grid background */
+.cyber-grid {
+  background-image: 
+    linear-gradient(rgba(0, 255, 136, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 136, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Neon text glow */
+.text-neon-green {
+  color: var(--cyber-green);
+  text-shadow: 0 0 10px var(--cyber-green);
+}
+
+.text-neon-red {
+  color: var(--cyber-red);
+  text-shadow: 0 0 10px var(--cyber-red);
+}
+
+.text-neon-blue {
+  color: var(--cyber-blue);
+  text-shadow: 0 0 10px var(--cyber-blue);
+}
+
+/* Button glow effects */
+.btn-cyber {
+  @apply px-6 py-3 rounded-lg font-semibold transition-all duration-300;
+  @apply border border-cyber-red-500 text-cyber-red-500;
+  @apply hover:bg-cyber-red-500 hover:text-black hover:shadow-neon-red;
+  @apply focus:outline-none focus:ring-2 focus:ring-cyber-red-500 focus:ring-offset-2 focus:ring-offset-cyber-dark;
+}
+
+.btn-cyber-red {
+  @apply border-cyber-red-500 text-cyber-red-500;
+  @apply hover:bg-cyber-red-500 hover:text-white hover:shadow-neon-red;
+  @apply focus:outline-none focus:ring-2 focus:ring-cyber-red-500 focus:ring-offset-2 focus:ring-offset-cyber-dark;
+}
+
+.btn-cyber-blue {
+  @apply border-cyber-blue-500 text-cyber-blue-500;
+  @apply hover:bg-cyber-blue-500 hover:text-white hover:shadow-neon-blue;
+  @apply focus:outline-none focus:ring-2 focus:ring-cyber-blue-500 focus:ring-offset-2 focus:ring-offset-cyber-dark;
+}
+
+/* Card styles */
+.cyber-card {
+  @apply glass-morphism rounded-xl p-6;
+  @apply border border-white/10 hover:border-cyber-red-500/30;
+  @apply transition-all duration-300;
+}
+
+.cyber-card:hover {
+  box-shadow: 
+    0 0 20px rgba(255, 0, 64, 0.1),
+    0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+/* Input styles */
+.cyber-input {
+  @apply w-full px-4 py-3 rounded-lg;
+  @apply bg-white/5 border border-white/20;
+  @apply text-white placeholder-white/50;
+  @apply focus:border-cyber-red-500 focus:ring-2 focus:ring-cyber-red-500/20;
+  @apply transition-all duration-300;
+}
+
+/* Status indicators */
+.status-safe {
+  @apply text-cyber-purple-500;
+}
+
+.status-warning {
+  @apply text-cyber-orange-500;
+}
+
+.status-danger {
+  @apply text-cyber-red-500;
+}
+
+.status-info {
+  @apply text-cyber-blue-500;
+}
+
+/* Radar animation */
+@keyframes radar-sweep {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.radar-animation {
+  animation: radar-sweep 3s linear infinite;
+}
+
+/* Scanning line animation */
+@keyframes scan-line {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+.scan-line {
+  animation: scan-line 2s ease-in-out infinite;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--cyber-green) 50%,
+    transparent 100%
+  );
+  height: 2px;
+  width: 100%;
+}
+
+/* Pulse animation for alerts */
+@keyframes alert-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 51, 102, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(255, 51, 102, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 51, 102, 0);
+  }
+}
+
+.alert-pulse {
+  animation: alert-pulse 2s infinite;
+}
+
+/* Typing animation */
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.typing-animation {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid var(--cyber-green);
+  animation: 
+    typing 3s steps(40, end),
+    blink-caret 0.75s step-end infinite;
+}
+
+@keyframes blink-caret {
+  from, to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: var(--cyber-green);
+  }
+}
+
+/* Matrix-style code rain effect */
+.matrix-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.1;
+}
+
+/* Custom selection colors */
+::selection {
+  background: rgba(0, 255, 136, 0.3);
+  color: white;
+}
+
+::-moz-selection {
+  background: rgba(0, 255, 136, 0.3);
+  color: white;
+}
+
+/* Loader animations */
+.cyber-loader {
+  border: 2px solid rgba(0, 255, 136, 0.2);
+  border-top: 2px solid var(--cyber-green);
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Progress bars */
+.progress-bar {
+  background: linear-gradient(90deg, var(--cyber-green) 0%, rgba(0, 255, 136, 0.3) 100%);
+  height: 4px;
+  border-radius: 2px;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    transparent 100%
+  );
+  animation: shimmer 2s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Tooltip styles */
+.tooltip {
+  @apply absolute z-50 px-2 py-1 text-xs font-medium text-white;
+  @apply bg-black/80 rounded border border-cyber-green-500/30;
+  @apply pointer-events-none opacity-0 transition-opacity duration-200;
+}
+
+.tooltip-visible {
+  @apply opacity-100;
+}
+
+/* Responsive text sizes */
+@media (max-width: 640px) {
+  .text-responsive-lg {
+    @apply text-2xl;
+  }
+  .text-responsive-xl {
+    @apply text-3xl;
+  }
+}
+
+@media (min-width: 641px) {
+  .text-responsive-lg {
+    @apply text-4xl;
+  }
+  .text-responsive-xl {
+    @apply text-6xl;
+  }
+}

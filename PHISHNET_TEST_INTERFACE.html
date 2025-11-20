@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHISHNET - Test Interface</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a0a0a 100%);
+            color: #ff0000;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(20, 0, 0, 0.8);
+            border: 2px solid #ff0000;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.3);
+        }
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px #ff0000;
+        }
+        .subtitle {
+            text-align: center;
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            color: #ff6666;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            background: #000;
+            border: 1px solid #ff0000;
+            border-radius: 5px;
+            color: #ff0000;
+            font-family: inherit;
+        }
+        textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        button {
+            background: linear-gradient(45deg, #ff0000, #cc0000);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        button:hover {
+            background: linear-gradient(45deg, #cc0000, #990000);
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+        }
+        .result {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid #ff0000;
+            border-radius: 5px;
+            min-height: 100px;
+        }
+        .threat-critical { color: #ff0000; }
+        .threat-high { color: #ff6600; }
+        .threat-medium { color: #ffaa00; }
+        .threat-low { color: #66ff66; }
+        .threat-safe { color: #00ff00; }
+        .samples {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .sample-btn {
+            background: #330000;
+            border: 1px solid #ff0000;
+            color: #ff0000;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .sample-btn:hover {
+            background: #550000;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 PHISHNET</h1>
+        <div class="subtitle">AI Cybersecurity Suite - Live Test Interface</div>
+        
+        <div class="form-group">
+            <label for="email-content">Email Content:</label>
+            <textarea id="email-content" placeholder="Paste email content here for analysis..."></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label for="sender-email">Sender Email:</label>
+            <input type="email" id="sender-email" placeholder="sender@example.com">
+        </div>
+        
+        <div class="form-group">
+            <label for="subject">Subject:</label>
+            <input type="text" id="subject" placeholder="Email subject line">
+        </div>
+        
+        <div class="samples">
+            <button class="sample-btn" onclick="loadSample('legitimate')">📧 Legitimate Email</button>
+            <button class="sample-btn" onclick="loadSample('phishing-bank')">🚨 Banking Phish</button>
+            <button class="sample-btn" onclick="loadSample('phishing-prize')">💰 Prize Scam</button>
+            <button class="sample-btn" onclick="loadSample('phishing-tech')">⚠️ Tech Support Scam</button>
+        </div>
+        
+        <div class="form-group" style="text-align: center; margin-top: 30px;">
+            <button onclick="analyzeEmail()">🔍 Analyze Email</button>
+        </div>
+        
+        <div id="result" class="result" style="display: none;">
+            <h3>🎯 Analysis Results</h3>
+            <div id="result-content"></div>
+        </div>
+    </div>
+
+    <script>
+        const samples = {
+            'legitimate': {
+                content: "Hi John, Thanks for your email. Let me know if you need any clarification on the project requirements. Best regards, Mary",
+                sender: "mary@company.com",
+                subject: "Re: Project Requirements"
+            },
+            'phishing-bank': {
+                content: "URGENT: Your account will be suspended within 24 hours! Click here to verify your identity immediately: http://suspicious-bank.com/verify. Act now to avoid account closure.",
+                sender: "security@bnk-alert.com",
+                subject: "URGENT: Account Verification Required"
+            },
+            'phishing-prize': {
+                content: "Congratulations! You are the winner of our million dollar lottery! To claim your prize, please click here and provide your banking details. Limited time offer!",
+                sender: "lottery@winner-alert.com",
+                subject: "Congratulations - You Won $1,000,000!"
+            },
+            'phishing-tech': {
+                content: "Your computer has been compromised! Urgent action required. Click here to download our security tool immediately: http://bit.ly/fix-computer",
+                sender: "tech-support@microsoft-alert.com",
+                subject: "URGENT: Security Alert - Action Required"
+            }
+        };
+
+        function loadSample(type) {
+            const sample = samples[type];
+            if (sample) {
+                document.getElementById('email-content').value = sample.content;
+                document.getElementById('sender-email').value = sample.sender;
+                document.getElementById('subject').value = sample.subject;
+            }
+        }
+
+        async function analyzeEmail() {
+            const content = document.getElementById('email-content').value;
+            const sender = document.getElementById('sender-email').value;
+            const subject = document.getElementById('subject').value;
+            
+            if (!content.trim()) {
+                alert('Please enter email content to analyze');
+                return;
+            }
+            
+            const resultDiv = document.getElementById('result');
+            const resultContent = document.getElementById('result-content');
+            
+            resultContent.innerHTML = '<div style="text-align: center;">🔄 Analyzing email... Please wait</div>';
+            resultDiv.style.display = 'block';
+            
+            try {
+                const response = await fetch('http://127.0.0.1:8002/api/v1/analyze', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        content: content,
+                        sender_email: sender || null,
+                        subject: subject || null
+                    })
+                });
+                
+                if (response.ok) {
+                    const result = await response.json();
+                    displayResult(result);
+                } else {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+            } catch (error) {
+                resultContent.innerHTML = `
+                    <div style="color: #ff6666;">
+                        <h4>❌ Analysis Failed</h4>
+                        <p><strong>Error:</strong> ${error.message}</p>
+                        <p><strong>Note:</strong> Make sure the PHISHNET server is running on http://127.0.0.1:8002</p>
+                    </div>
+                `;
+            }
+        }
+        
+        function displayResult(result) {
+            const threatClass = `threat-${result.threat_level.toLowerCase()}`;
+            const score = (result.threat_score * 100).toFixed(1);
+            
+            const html = `
+                <div>
+                    <h4 class="${threatClass}">${result.verdict}</h4>
+                    <p><strong>Threat Score:</strong> <span class="${threatClass}">${score}%</span></p>
+                    <p><strong>Threat Level:</strong> <span class="${threatClass}">${result.threat_level}</span></p>
+                    <p><strong>Processing Time:</strong> ${result.processing_time_ms}ms</p>
+                    <p><strong>Analysis ID:</strong> ${result.analysis_id}</p>
+                    
+                    <h5>🚨 Detected Indicators:</h5>
+                    <ul>
+                        ${result.detailed_analysis.indicators.map(indicator => `<li>${indicator}</li>`).join('')}
+                    </ul>
+                    
+                    <h5>💡 Recommendations:</h5>
+                    <ul>
+                        ${result.recommendations.map(rec => `<li>${rec}</li>`).join('')}
+                    </ul>
+                    
+                    <h5>📊 Technical Details:</h5>
+                    <ul>
+                        <li><strong>Keyword Matches:</strong> ${result.detailed_analysis.analysis_details.keyword_matches}</li>
+                        <li><strong>URLs Found:</strong> ${result.detailed_analysis.analysis_details.urls_found}</li>
+                        <li><strong>Sender Domain:</strong> ${result.detailed_analysis.analysis_details.sender_domain || 'N/A'}</li>
+                    </ul>
+                </div>
+            `;
+            
+            document.getElementById('result-content').innerHTML = html;
+        }
+    </script>
+</body>
+</html>
