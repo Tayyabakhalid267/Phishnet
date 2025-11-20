@@ -7,7 +7,10 @@ asyncpg==0.29.0
 redis==5.0.1
 celery==5.3.4
 python-multipart==0.0.6
-python-jose[cryptography]==3.3.0
+python-jose==3.3.0
+ecdsa>=0.18.0
+pyasn1>=0.4.8
+rsa>=4.9
 passlib[bcrypt]==1.7.4
 python-decouple==3.8
 requests==2.31.0
