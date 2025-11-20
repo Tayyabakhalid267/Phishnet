@@ -1,11 +1,15 @@
 [phases.setup]
-nixPkgs = ["python311", "gcc", "pkg-config"]
+nixPkgs = ["python311", "gcc", "pkg-config", "pip"]
+pythonVersion = "3.11"
 
 [phases.install]
 cmds = [
-  "pip install --upgrade pip setuptools wheel",
-  "pip install -r requirements.txt --no-cache-dir"
+  "python3.11 -m pip install --upgrade pip setuptools wheel",
+  "python3.11 -m pip install -r requirements.txt --no-cache-dir"
 ]
 
+[phases.build]
+cmds = ["echo 'Build phase complete'"]
+
 [start]
-cmd = "uvicorn backend.main:app --host 0.0.0.0 --port $PORT --workers 1"
+cmd = "python3.11 -m uvicorn backend.main:app --host 0.0.0.0 --port $PORT --workers 1"
